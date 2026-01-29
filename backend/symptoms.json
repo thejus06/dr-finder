@@ -1,0 +1,9 @@
+{
+  "fever": "General Physician",
+  "cold": "ENT",
+  "cough": "Pulmonologist",
+  "chest pain": "Cardiologist",
+  "skin": "Dermatologist",
+  "eye": "Ophthalmologist",
+  "tooth": "Dentist"
+}

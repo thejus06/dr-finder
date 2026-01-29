@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Dr. Anil Kumar",
+    "specialization": "General Physician",
+    "city": "Bangalore",
+    "hospital": "Apollo Hospital",
+    "phone": "9876543210",
+    "lat": 12.9716,
+    "lng": 77.5946
+  },
+  {
+    "name": "Dr. Ramesh Rao",
+    "specialization": "Cardiologist",
+    "city": "Bangalore",
+    "hospital": "Fortis Hospital",
+    "phone": "9123456780",
+    "lat": 12.9980,
+    "lng": 77.5920
+  },
+  {
+    "name": "Dr. Neha Sharma",
+    "specialization": "Dermatologist",
+    "city": "Delhi",
+    "hospital": "Max Hospital",
+    "phone": "9988776655",
+    "lat": 28.6139,
+    "lng": 77.2090
+  }
+]
