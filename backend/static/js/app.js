@@ -25,6 +25,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* =========================
+   SYMPTOM AUTO-SUGGEST
+========================= */
+
+const symptomsInput = document.getElementById("symptoms");
+const suggestionsBox = document.getElementById("suggestions");
+
+// Must match symptoms.json keys
+const ALL_SYMPTOMS = [
+    "fever",
+    "cold",
+    "cough",
+    "headache",
+    "chest pain",
+    "skin",
+    "eye",
+    "tooth"
+];
+
+symptomsInput.addEventListener("input", () => {
+    const value = symptomsInput.value.toLowerCase();
+
+    // Split by comma, space, or 'and'
+    const parts = value.split(/,|\band\b|\s+/);
+    const lastWord = parts[parts.length - 1].trim();
+
+    suggestionsBox.innerHTML = "";
+
+    if (!lastWord) {
+        suggestionsBox.classList.add("hidden");
+        return;
+    }
+
+    const matches = ALL_SYMPTOMS.filter(sym =>
+        sym.startsWith(lastWord)
+    );
+
+    if (matches.length === 0) {
+        suggestionsBox.classList.add("hidden");
+        return;
+    }
+
+    matches.forEach(symptom => {
+        const div = document.createElement("div");
+        div.className = "suggestion-item";
+        div.textContent = symptom;
+
+        div.onclick = () => {
+            parts[parts.length - 1] = symptom;
+            symptomsInput.value = parts.join(", ") + ", ";
+            suggestionsBox.classList.add("hidden");
+            symptomsInput.focus();
+        };
+
+        suggestionsBox.appendChild(div);
+    });
+
+    suggestionsBox.classList.remove("hidden");
+});
+
+// Hide suggestions when clicking outside
+document.addEventListener("click", (e) => {
+    if (!symptomsInput.contains(e.target) &&
+        !suggestionsBox.contains(e.target)) {
+        suggestionsBox.classList.add("hidden");
+    }
+});
+
+
+/* =========================
    DOCTOR SEARCH LOGIC
 ========================= */
 
@@ -32,7 +101,6 @@ let userLat = null;
 let userLng = null;
 
 async function findDoctors() {
-    const symptomsInput = document.getElementById("symptoms");
     const cityInput = document.getElementById("city");
     const resultDiv = document.getElementById("result");
     const loading = document.getElementById("loading");
