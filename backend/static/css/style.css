@@ -35,13 +35,12 @@ body {
 
 /* ===== CONTAINER ===== */
 .container {
-  position: relative;
+  position: relative; /* ✅ ADD THIS */
   width: 440px;
   padding: 36px;
   background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.12);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* ===== HEADINGS ===== */
@@ -252,4 +251,41 @@ body.dark .theme-toggle {
 
 body.dark .toggle-thumb {
   transform: translateX(30px);
+}
+/* ===== SYMPTOM AUTO-SUGGESTIONS ===== */
+.suggestions {
+  position: absolute;
+  top: 155px; /* aligns under textarea */
+  left: 36px;
+  width: calc(100% - 72px);
+
+  background: #ffffff;
+  border: 1px solid #d0d7e2;
+  border-radius: 10px;
+
+  max-height: 160px;
+  overflow-y: auto;
+
+  z-index: 50;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.suggestion-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.suggestion-item:hover {
+  background: rgba(45,100,235,0.1);
+}
+
+/* Dark mode */
+body.dark .suggestions {
+  background: #0b1430;
+  border-color: #2a3f8f;
+}
+
+body.dark .suggestion-item {
+  color: #eaf0ff;
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<!-- 🌗 Theme Toggle -->
+<!-- 🌗 Animated Theme Toggle -->
 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
     <span class="toggle-thumb">🌙</span>
 </button>
@@ -17,24 +17,35 @@
 <div class="container">
     <h1>Doctor Finder</h1>
 
+    <!-- Symptoms input -->
     <textarea id="symptoms" placeholder="Describe your symptoms"></textarea>
+
+    <!-- 🔍 Auto-suggestion dropdown -->
+    <div id="suggestions" class="suggestions hidden"></div>
+
     <small class="hint">Try: fever, headache, cough</small>
 
+    <!-- City input -->
     <input type="text" id="city" placeholder="Enter your city">
 
+    <!-- Search button -->
     <button id="findBtn" onclick="findDoctors()">Find Doctors</button>
 
+    <!-- Loading state -->
     <div id="loading" class="loading hidden">
         🔍 Finding doctors near you...
     </div>
 
+    <!-- Results -->
     <div id="result" class="result"></div>
 
+    <!-- Footer -->
     <div class="footer">
         ⚠️ This is not a medical diagnosis
     </div>
 </div>
 
+<!-- Main JS -->
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

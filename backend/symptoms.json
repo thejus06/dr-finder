@@ -1,9 +1,16 @@
 {
-  "fever": "General Physician",
-  "cold": "ENT",
-  "cough": "Pulmonologist",
-  "chest pain": "Cardiologist",
-  "skin": "Dermatologist",
-  "eye": "Ophthalmologist",
-  "tooth": "Dentist"
+  "fever": ["General Physician"],
+  "cold": ["ENT", "General Physician"],
+  "cough": ["Pulmonologist", "ENT"],
+  "headache": ["Neurologist", "General Physician"],
+  "chest pain": ["Cardiologist"],
+  "skin": ["Dermatologist"],
+  "rash": ["Dermatologist"],
+  "itching": ["Dermatologist"],
+  "eye": ["Ophthalmologist"],
+  "tooth": ["Dentist"],
+  "tooth pain": ["Dentist"],
+  "stomach pain": ["Gastroenterologist"],
+  "vomiting": ["Gastroenterologist", "General Physician"],
+  "diarrhea": ["Gastroenterologist"]
 }

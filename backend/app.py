@@ -42,52 +42,54 @@ def home():
 def find_doctors():
     data = request.json
 
-    symptoms = data.get("symptoms", "").lower()
+    raw_symptoms = data.get("symptoms", "").lower()
     city = data.get("city", "").lower()
     user_lat = data.get("lat")
     user_lng = data.get("lng")
 
-    # 1️⃣ Detect specialization from symptoms
-    specialization = None
+    # 1️⃣ Normalize symptoms (comma / and)
+    cleaned = raw_symptoms.replace(" and ", ",")
+    tokens = [s.strip() for s in cleaned.split(",") if s.strip()]
 
-    for key, value in symptom_map.items():
-        if key in symptoms:
-            specialization = value
-            break
+    matched_specializations = set()
 
-    # ❌ If no symptom matched
-    if not specialization:
+    # 2️⃣ Detect specializations (supports multiple per symptom)
+    for token in tokens:
+        for symptom, specs in symptom_map.items():
+            if symptom in token:
+                for spec in specs:
+                    matched_specializations.add(spec)
+
+    # ❌ No valid symptoms found
+    if not matched_specializations:
         return jsonify({
             "error": "Symptoms not recognized. Please enter valid medical symptoms."
         }), 400
 
-
-    # 2️⃣ Match doctors by specialization
+    # 3️⃣ Match doctors by specialization
     matched_doctors = [
         d for d in doctors
-        if d["specialization"].lower() == specialization.lower()
+        if d["specialization"] in matched_specializations
     ]
 
-    print("City received from frontend:", city)
-
-    # 3️⃣ Filter doctors by city (MAIN FIX)
+    # 4️⃣ Filter by city
     if city:
         matched_doctors = [
             d for d in matched_doctors
             if d.get("city", "").lower() == city
         ]
 
-    # 4️⃣ Calculate distance using GPS
+    # 5️⃣ Calculate distance
     for d in matched_doctors:
         d["distance_km"] = haversine(
             user_lat, user_lng, d["lat"], d["lng"]
         )
 
-    # 5️⃣ Sort by nearest doctor
+    # 6️⃣ Sort nearest first
     matched_doctors.sort(key=lambda x: x["distance_km"])
 
     return jsonify({
-        "specialization": specialization,
+        "specialization": ", ".join(matched_specializations),
         "doctors": matched_doctors
     })
 
