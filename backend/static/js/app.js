@@ -161,16 +161,26 @@ async function findDoctors() {
                     return;
                 }
 
-                data.doctors.forEach(d => {
-                    resultDiv.innerHTML += `
-                        <div class="card">
+                data.doctors.forEach((d, i) => {
+                    result.innerHTML += `
+                        <div class="card" style="animation-delay:${i * 0.12}s">
                             <strong>${d.name}</strong><br>
                             ${d.hospital}<br>
                             📍 ${d.distance_km} km away<br>
                             📞 ${d.phone}
+
+                            <iframe
+                                width="100%"
+                                height="160"
+                                style="margin-top:10px;border-radius:10px;border:0"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                src="https://www.google.com/maps?q=${d.lat},${d.lng}&output=embed">
+                            </iframe>
                         </div>
-                    `;
+                     `;
                 });
+
 
             } catch {
                 loading.classList.add("hidden");
