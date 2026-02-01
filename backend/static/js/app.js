@@ -6,27 +6,19 @@ console.log("Script loaded");
 
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
+    const thumb = themeToggle.querySelector(".toggle-thumb");
     const body = document.body;
 
-    if (!themeToggle) {
-        console.error("Theme toggle button not found!");
-        return;
-    }
-
-    // Load saved theme
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme === "dark") {
         body.classList.add("dark");
-        themeToggle.textContent = "☀️";
-    } else {
-        themeToggle.textContent = "🌙";
+        thumb.textContent = "☀️";
     }
 
     themeToggle.addEventListener("click", () => {
         body.classList.toggle("dark");
-
         const isDark = body.classList.contains("dark");
-        themeToggle.textContent = isDark ? "☀️" : "🌙";
+        thumb.textContent = isDark ? "☀️" : "🌙";
         localStorage.setItem("theme", isDark ? "dark" : "light");
     });
 });
