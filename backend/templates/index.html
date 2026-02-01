@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Doctor Finder</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" href="data:,">
 
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="icon" href="data:,">
 </head>
 <body>
-
 <div class="container">
+
+    <!-- 🌗 Theme Toggle Button -->
+    <button id="theme-toggle" class="theme-toggle" type="button">
+    🌙
+    </button>
+
+
     <h1>Doctor Finder</h1>
 
     <textarea id="symptoms" placeholder="Describe your symptoms"></textarea>
@@ -28,8 +36,11 @@
     <div class="footer">
         ⚠️ This is not a medical diagnosis
     </div>
+
 </div>
 
+<!-- Main JS -->
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
 </body>
 </html>

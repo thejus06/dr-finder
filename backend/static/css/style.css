@@ -1,47 +1,89 @@
+/* ===== THEME VARIABLES ===== */
+:root {
+  --bg: linear-gradient(to right, #eaf6ff, #f4fbff);
+  --card-bg: #ffffff;
+  --text-primary: #0b1f44;
+  --text-secondary: #555;
+  --card-soft: #f6f9fc;
+  --border: #d0d7e2;
+}
+
+body.dark {
+  --bg: linear-gradient(to right, #050b1a, #0b1530);
+  --card-bg: #0b1224;
+  --text-primary: #ffffff;
+  --text-secondary: #9aa4bf;
+  --card-soft: #0b1430;
+  --border: #2a3f8f;
+}
+
+/* ===== BASE ===== */
 * {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
 
 body {
-  background: linear-gradient(to right, #eaf6ff, #f4fbff);
+  background: var(--bg);
+  color: var(--text-primary);
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* ===== CONTAINER ===== */
 .container {
-  background: white;
+  position: relative;
   width: 440px;
   padding: 36px;
+  background: var(--card-bg);
   border-radius: 16px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-
+/* ===== HEADINGS ===== */
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 6px;
 }
 
-textarea, input {
+.subtitle {
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 18px;
+  color: var(--text-secondary);
+}
+
+/* ===== INPUTS ===== */
+textarea,
+input {
   width: 100%;
   padding: 14px;
   margin-top: 12px;
   border-radius: 10px;
-  border: 1.5px solid #d0d7e2;
+  border: 1.5px solid var(--border);
   font-size: 14px;
-  transition: border 0.2s, box-shadow 0.2s;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  transition: border 0.2s, box-shadow 0.2s, background 0.3s;
 }
 
-textarea:focus, input:focus {
+textarea::placeholder,
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+textarea:focus,
+input:focus {
   outline: none;
   border-color: #2d64eb;
-  box-shadow: 0 0 0 3px rgba(45, 100, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(45,100,235,0.15);
 }
 
-
+/* ===== BUTTON ===== */
 button {
   width: 100%;
   margin-top: 20px;
@@ -57,28 +99,20 @@ button {
 
 button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(45, 100, 235, 0.35);
+  box-shadow: 0 8px 20px rgba(45,100,235,0.35);
 }
-
-button:active {
-  transform: translateY(0);
-}
-
-button:disabled {
-  background: #a7b8f5;
-  box-shadow: none;
-}
-
 
 button:disabled {
   background: #9bb3f5;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
+/* ===== LOADING ===== */
 .loading {
   margin-top: 14px;
   font-size: 14px;
-  color: #444;
+  color: var(--text-secondary);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -91,17 +125,24 @@ button:disabled {
   100% { opacity: 0.4; }
 }
 
-
 .hidden {
   display: none;
 }
 
+/* ===== RESULTS ===== */
 .result {
   margin-top: 18px;
+  animation: slideUp 0.35s ease;
 }
 
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== CARD ===== */
 .card {
-  background: #f6f9fc;
+  background: var(--card-soft);
   padding: 16px;
   border-radius: 12px;
   margin-top: 14px;
@@ -111,45 +152,15 @@ button:disabled {
 
 .card strong {
   font-size: 16px;
-  color: #0b1f44;
+  color: var(--text-primary);
 }
 
-
-.error {
-  background: #fff0f0;
-  color: #b00020;
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 14px;
-  margin-top: 14px;
-  border-left: 4px solid #b00020;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-
-.hint {
-  font-size: 12px;
-  color: #777;
-  margin-top: 4px;
-  display: block;
-}
-
-.footer {
-  margin-top: 12px;
-  text-align: center;
-  font-size: 12px;
-  color: #777;
-}
-
-.info {
-  background: #fff8e1;
-  color: #7a5d00;
-  padding: 14px;
-  border-radius: 10px;
-  margin-top: 12px;
-  font-size: 14px;
-  border-left: 4px solid #ffb300;
-}
-
+/* ===== BADGES & MESSAGES ===== */
 .badge {
   display: inline-block;
   background: #e8efff;
@@ -161,28 +172,56 @@ button:disabled {
   margin-bottom: 10px;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+body.dark .badge {
+  background: #1e293b;
+  color: #93c5fd;
 }
 
-.result {
-  animation: slideUp 0.35s ease;
+.error {
+  background: #fff0f0;
+  color: #b00020;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 14px;
+  border-left: 4px solid #b00020;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.info {
+  background: #fff8e1;
+  color: #7a5d00;
+  padding: 14px;
+  border-radius: 10px;
+  margin-top: 12px;
+  border-left: 4px solid #ffb300;
+}
+
+.hint,
+.footer {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-top: 12px;
+}
+
+/* ===== THEME TOGGLE ===== */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 64px;
+  height: 34px;
+  background: #e6ecff;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  z-index: 1000;
+}
+
+body.dark .theme-toggle {
+  background: #2d64eb;
 }

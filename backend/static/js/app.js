@@ -1,28 +1,69 @@
 console.log("Script loaded");
 
+/* =========================
+   THEME TOGGLE (DARK MODE)
+========================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    if (!themeToggle) {
+        console.error("Theme toggle button not found!");
+        return;
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+        body.classList.add("dark");
+        themeToggle.textContent = "☀️";
+    } else {
+        themeToggle.textContent = "🌙";
+    }
+
+    themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark");
+
+        const isDark = body.classList.contains("dark");
+        themeToggle.textContent = isDark ? "☀️" : "🌙";
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+});
+
+
+/* =========================
+   DOCTOR SEARCH LOGIC
+========================= */
+
 let userLat = null;
 let userLng = null;
-const button = document.querySelector("button");
-
 
 async function findDoctors() {
-    const symptoms = document.getElementById("symptoms").value.trim();
-    const city = document.getElementById("city").value.trim().toLowerCase();
-
+    const symptomsInput = document.getElementById("symptoms");
+    const cityInput = document.getElementById("city");
     const resultDiv = document.getElementById("result");
     const loading = document.getElementById("loading");
     const btn = document.getElementById("findBtn");
 
+    const symptoms = symptomsInput.value.trim();
+    const city = cityInput.value.trim().toLowerCase();
+
+    resultDiv.innerHTML = "";
+    resultDiv.classList.remove("hidden");
+
     if (!symptoms || !city) {
-        resultDiv.innerHTML = `<div class="error">Please enter symptoms and city.</div>`;
+        resultDiv.innerHTML = `
+            <div class="error">
+                Please enter both symptoms and city.
+            </div>
+        `;
         return;
     }
 
-    
     btn.disabled = true;
     btn.innerText = "Searching...";
     loading.classList.remove("hidden");
-    resultDiv.innerHTML = "";
 
     navigator.geolocation.getCurrentPosition(
         async (position) => {
@@ -32,12 +73,10 @@ async function findDoctors() {
             try {
                 const response = await fetch("/find-doctors", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
+                    headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
-                        symptoms: symptoms,
-                        city: city,
+                        symptoms,
+                        city,
                         lat: userLat,
                         lng: userLng
                     })
@@ -51,20 +90,16 @@ async function findDoctors() {
                     return;
                 }
 
-                resultDiv.innerHTML = `
-                    <div class="badge">${data.specialization}</div>
-                `;
-
+                resultDiv.innerHTML = `<div class="badge">${data.specialization}</div>`;
 
                 if (data.doctors.length === 0) {
                     resultDiv.innerHTML += `
                         <div class="info">
-                            No doctors found in this city
+                            No doctors found in this city.
                         </div>
                     `;
-                     return;
+                    return;
                 }
-
 
                 data.doctors.forEach(d => {
                     resultDiv.innerHTML += `
@@ -77,8 +112,13 @@ async function findDoctors() {
                     `;
                 });
 
-            } catch (err) {
-                resultDiv.innerHTML = `<div class="error">Server error. Try again.</div>`;
+            } catch {
+                loading.classList.add("hidden");
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        Server error. Please try again.
+                    </div>
+                `;
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Find Doctors";
@@ -88,7 +128,11 @@ async function findDoctors() {
             loading.classList.add("hidden");
             btn.disabled = false;
             btn.innerText = "Find Doctors";
-            resultDiv.innerHTML = `<div class="error">Location access is required.</div>`;
+            resultDiv.innerHTML = `
+                <div class="error">
+                    Location access is required to find nearby doctors.
+                </div>
+            `;
         }
     );
 }
