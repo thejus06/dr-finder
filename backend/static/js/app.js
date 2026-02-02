@@ -162,7 +162,7 @@ async function findDoctors() {
                 }
 
                 data.doctors.forEach((d, i) => {
-                    result.innerHTML += `
+                    resultDiv.innerHTML += `
                         <div class="card" style="animation-delay:${i * 0.12}s">
                             <strong>${d.name}</strong><br>
                             ${d.hospital}<br>
