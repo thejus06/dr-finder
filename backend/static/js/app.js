@@ -3,14 +3,12 @@ console.log("Script loaded");
 /* =========================
    THEME TOGGLE (DARK MODE)
 ========================= */
-
 document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
     const thumb = themeToggle.querySelector(".toggle-thumb");
     const body = document.body;
 
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
+    if (localStorage.getItem("theme") === "dark") {
         body.classList.add("dark");
         thumb.textContent = "☀️";
     }
@@ -23,15 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
 /* =========================
    SYMPTOM AUTO-SUGGEST
 ========================= */
-
 const symptomsInput = document.getElementById("symptoms");
 const suggestionsBox = document.getElementById("suggestions");
 
-// Must match symptoms.json keys
 const ALL_SYMPTOMS = [
     "fever",
     "cold",
@@ -45,8 +40,6 @@ const ALL_SYMPTOMS = [
 
 symptomsInput.addEventListener("input", () => {
     const value = symptomsInput.value.toLowerCase();
-
-    // Split by comma, space, or 'and'
     const parts = value.split(/,|\band\b|\s+/);
     const lastWord = parts[parts.length - 1].trim();
 
@@ -61,7 +54,7 @@ symptomsInput.addEventListener("input", () => {
         sym.startsWith(lastWord)
     );
 
-    if (matches.length === 0) {
+    if (!matches.length) {
         suggestionsBox.classList.add("hidden");
         return;
     }
@@ -73,7 +66,8 @@ symptomsInput.addEventListener("input", () => {
 
         div.onclick = () => {
             parts[parts.length - 1] = symptom;
-            symptomsInput.value = parts.join(", ") + ", ";
+            // ✅ optional cleanup
+            symptomsInput.value = parts.filter(Boolean).join(", ") + ", ";
             suggestionsBox.classList.add("hidden");
             symptomsInput.focus();
         };
@@ -84,7 +78,6 @@ symptomsInput.addEventListener("input", () => {
     suggestionsBox.classList.remove("hidden");
 });
 
-// Hide suggestions when clicking outside
 document.addEventListener("click", (e) => {
     if (!symptomsInput.contains(e.target) &&
         !suggestionsBox.contains(e.target)) {
@@ -92,14 +85,9 @@ document.addEventListener("click", (e) => {
     }
 });
 
-
 /* =========================
    DOCTOR SEARCH LOGIC
 ========================= */
-
-let userLat = null;
-let userLng = null;
-
 async function findDoctors() {
     const cityInput = document.getElementById("city");
     const resultDiv = document.getElementById("result");
@@ -110,14 +98,15 @@ async function findDoctors() {
     const city = cityInput.value.trim().toLowerCase();
 
     resultDiv.innerHTML = "";
-    resultDiv.classList.remove("hidden");
 
     if (!symptoms || !city) {
-        resultDiv.innerHTML = `
-            <div class="error">
-                Please enter both symptoms and city.
-            </div>
-        `;
+        resultDiv.innerHTML = `<div class="error">Please enter both symptoms and city.</div>`;
+        return;
+    }
+
+    // ✅ optional defensive check
+    if (!navigator.geolocation) {
+        resultDiv.innerHTML = `<div class="error">Geolocation not supported.</div>`;
         return;
     }
 
@@ -127,9 +116,6 @@ async function findDoctors() {
 
     navigator.geolocation.getCurrentPosition(
         async (position) => {
-            userLat = position.coords.latitude;
-            userLng = position.coords.longitude;
-
             try {
                 const response = await fetch("/find-doctors", {
                     method: "POST",
@@ -137,8 +123,8 @@ async function findDoctors() {
                     body: JSON.stringify({
                         symptoms,
                         city,
-                        lat: userLat,
-                        lng: userLng
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
                     })
                 });
 
@@ -152,12 +138,8 @@ async function findDoctors() {
 
                 resultDiv.innerHTML = `<div class="badge">${data.specialization}</div>`;
 
-                if (data.doctors.length === 0) {
-                    resultDiv.innerHTML += `
-                        <div class="info">
-                            No doctors found in this city.
-                        </div>
-                    `;
+                if (!data.doctors.length) {
+                    resultDiv.innerHTML += `<div class="info">No doctors found in this city.</div>`;
                     return;
                 }
 
@@ -178,31 +160,22 @@ async function findDoctors() {
                                 src="https://www.google.com/maps?q=${d.lat},${d.lng}&output=embed">
                             </iframe>
                         </div>
-                     `;
+                    `;
                 });
 
-
             } catch {
-                loading.classList.add("hidden");
-                resultDiv.innerHTML = `
-                    <div class="error">
-                        Server error. Please try again.
-                    </div>
-                `;
+                resultDiv.innerHTML = `<div class="error">Server error. Please try again.</div>`;
             } finally {
                 btn.disabled = false;
                 btn.innerText = "Find Doctors";
+                loading.classList.add("hidden");
             }
         },
         () => {
             loading.classList.add("hidden");
             btn.disabled = false;
             btn.innerText = "Find Doctors";
-            resultDiv.innerHTML = `
-                <div class="error">
-                    Location access is required to find nearby doctors.
-                </div>
-            `;
+            resultDiv.innerHTML = `<div class="error">Location access is required.</div>`;
         }
     );
 }
