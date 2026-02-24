@@ -125,7 +125,7 @@ button:disabled {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 /* ===== RESULTS ===== */
@@ -302,4 +302,53 @@ body.dark .suggestions {
 
 body.dark .suggestion-item {
   color: #eaf0ff;
+}
+/* Doctor register link */
+.doctor-register {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  color: #2d64eb;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.doctor-register:hover {
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 2000;
+}
+
+.modal:not(.hidden) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 12px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+}
+
+.modal-close {
+  background: #eee;
+  color: #333;
 }

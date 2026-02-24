@@ -50,8 +50,19 @@
 
     </section>
 
-    <section class="actions">
+   <section class="actions">
         <button id="findBtn" onclick="findDoctors()">Find Doctors</button>
+
+        <!-- Doctor actions wrapper -->
+        <div id="doctorActions">
+            <button class="doctor-register" onclick="openDoctorForm()">
+                I’m a Doctor – Register
+            </button>
+
+            <button class="doctor-register" onclick="openDoctorLogin()">
+                Doctor Login
+            </button>
+        </div>
 
         <div id="loading" class="loading hidden" aria-live="polite">
             🔍 Finding doctors near you...
@@ -69,5 +80,49 @@
 </div>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<!-- Doctor Registration Modal -->
+<div id="doctorModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Doctor Registration</h3>
+    <input type="text" id="docUsername" placeholder="Username">
+    <input type="password" id="docPassword" placeholder="Password">
+    <input type="text" id="docName" placeholder="Doctor Name">
+    <input type="text" id="docSpec" placeholder="Specialization">
+    <input type="text" id="docHospital" placeholder="Hospital/Clinic">
+    <input type="text" id="docCity" placeholder="City">
+    <input type="text" id="docPhone" placeholder="Phone">
+    <input type="text" id="docLat" placeholder="Latitude">
+    <input type="text" id="docLng" placeholder="Longitude">
+
+    <button onclick="submitDoctor()">Submit</button>
+    <button class="modal-close" onclick="closeDoctorForm()">Cancel</button>
+  </div>
+</div>
+<!-- Doctor Login Modal -->
+<div id="doctorLoginModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Doctor Login</h3>
+    <input type="text" id="loginUsername" placeholder="Username">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="loginDoctor()">Login</button>
+    <button class="modal-close" onclick="closeDoctorLogin()">Cancel</button>
+  </div>
+</div>
+<div id="doctorEditModal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Edit Profile</h3>
+
+    <input id="editName">
+    <input id="editSpec">
+    <input id="editHospital">
+    <input id="editCity">
+    <input id="editPhone">
+    <input id="editLat">
+    <input id="editLng">
+
+    <button onclick="saveDoctor()">Save</button>
+    <button onclick="deleteDoctor()" class="modal-close">Delete</button>
+  </div>
+</div>
 </body>
 </html>

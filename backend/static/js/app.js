@@ -93,6 +93,8 @@ async function findDoctors() {
     const resultDiv = document.getElementById("result");
     const loading = document.getElementById("loading");
     const btn = document.getElementById("findBtn");
+    const doctorActions = document.getElementById("doctorActions");
+    doctorActions.style.display = "none";
 
     const symptoms = symptomsInput.value.trim();
     const city = cityInput.value.trim().toLowerCase();
@@ -178,4 +180,114 @@ async function findDoctors() {
             resultDiv.innerHTML = `<div class="error">Location access is required.</div>`;
         }
     );
+}
+function openDoctorForm() {
+  document.getElementById("doctorModal").classList.remove("hidden");
+}
+
+function closeDoctorForm() {
+  document.getElementById("doctorModal").classList.add("hidden");
+}
+
+async function submitDoctor() {
+  const data = {
+    username: docUsername.value,
+    password: docPassword.value,
+    name: docName.value,
+    specialization: docSpec.value,
+    hospital: docHospital.value,
+    city: docCity.value,
+    phone: docPhone.value,
+    lat: parseFloat(docLat.value),
+    lng: parseFloat(docLng.value)
+  };
+
+  const res = await fetch("/add-doctor", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(data)
+  });
+
+  const result = await res.json();
+
+  if (!result.ok) {
+    alert(result.error);
+    return;
+  }
+
+  closeDoctorForm();
+  alert("Doctor registered successfully");
+}
+let loggedDoctor = null;
+
+function openDoctorLogin() {
+  doctorLoginModal.classList.remove("hidden");
+}
+
+function closeDoctorLogin() {
+  doctorLoginModal.classList.add("hidden");
+}
+
+async function loginDoctor() {
+  const username = loginUsername.value;
+  const password = loginPassword.value;
+
+  const res = await fetch("/doctor-login", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify({ username, password })
+  });
+
+  const data = await res.json();
+
+  if (!data.found) {
+    alert("Invalid username or password");
+    return;
+  }
+
+  loggedDoctor = data.doctor;
+
+  editName.value = data.doctor.name;
+  editSpec.value = data.doctor.specialization;
+  editHospital.value = data.doctor.hospital;
+  editCity.value = data.doctor.city;
+  editPhone.value = data.doctor.phone;
+  editLat.value = data.doctor.lat;
+  editLng.value = data.doctor.lng;
+
+  closeDoctorLogin();
+  doctorEditModal.classList.remove("hidden");
+}
+
+async function saveDoctor() {
+  await fetch("/doctor-update", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({
+      originalPhone: loggedDoctor.phone,
+      name: editName.value,
+      specialization: editSpec.value,
+      hospital: editHospital.value,
+      city: editCity.value,
+      phone: editPhone.value,
+      lat: parseFloat(editLat.value),
+      lng: parseFloat(editLng.value)
+    })
+  });
+
+  alert("Updated");
+  doctorEditModal.classList.add("hidden");
+}
+
+async function deleteDoctor() {
+  if (!confirm("Delete profile?")) return;
+
+  await fetch("/doctor-delete", {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({ phone: loggedDoctor.phone })
+  });
+
+  alert("Deleted");
+  doctorEditModal.classList.add("hidden");
 }
