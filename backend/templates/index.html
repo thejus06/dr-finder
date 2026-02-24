@@ -3,53 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>Doctor Finder</title>
+
     <link
         rel="icon"
         type="image/png"
         href="{{ url_for('static', filename='images/fevicon.png') }}"
     >
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" href="data:,">
 </head>
 <body>
 
-<!-- 🌗 Animated Theme Toggle -->
+<!-- 🌗 Theme Toggle -->
 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
     <span class="toggle-thumb">🌙</span>
 </button>
 
 <div class="container">
-    <h1>Doctor Finder</h1>
 
-    <!-- Symptoms input -->
-    <textarea id="symptoms" placeholder="Describe your symptoms"></textarea>
+    <header class="header">
+        <h1>Doctor Finder</h1>
+        <p class="subtitle">Find the right doctor based on your symptoms</p>
+    </header>
 
-    <!-- 🔍 Auto-suggestion dropdown -->
-    <div id="suggestions" class="suggestions hidden"></div>
+    <section class="search-section">
 
-    <small class="hint">Try: fever, headache, cough</small>
+        <label for="symptoms">Symptoms</label>
 
-    <!-- City input -->
-    <input type="text" id="city" placeholder="Enter your city">
+        <!-- ✅ Wrapper for textarea + suggestions -->
+        <div class="input-wrapper">
+            <textarea
+                id="symptoms"
+                placeholder="Describe your symptoms"
+            ></textarea>
 
-    <!-- Search button -->
-    <button id="findBtn" onclick="findDoctors()">Find Doctors</button>
+            <div id="suggestions" class="suggestions hidden"></div>
+        </div>
 
-    <!-- Loading state -->
-    <div id="loading" class="loading hidden">
-        🔍 Finding doctors near you...
-    </div>
+        <small class="hint">Try: fever, headache, cough</small>
 
-    <!-- Results -->
-    <div id="result" class="result"></div>
+        <label for="city">City</label>
+        <input
+            type="text"
+            id="city"
+            placeholder="Enter your city"
+        />
 
-    <!-- Footer -->
-    <div class="footer">
+    </section>
+
+    <section class="actions">
+        <button id="findBtn" onclick="findDoctors()">Find Doctors</button>
+
+        <div id="loading" class="loading hidden" aria-live="polite">
+            🔍 Finding doctors near you...
+        </div>
+    </section>
+
+    <section class="results-section">
+        <div id="result" class="result"></div>
+    </section>
+
+    <footer class="footer">
         ⚠️ This is not a medical diagnosis
-    </div>
+    </footer>
+
 </div>
 
-<!-- Main JS -->
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>
