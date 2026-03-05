@@ -66,7 +66,6 @@ symptomsInput.addEventListener("input", () => {
 
         div.onclick = () => {
             parts[parts.length - 1] = symptom;
-            // ✅ optional cleanup
             symptomsInput.value = parts.filter(Boolean).join(", ") + ", ";
             suggestionsBox.classList.add("hidden");
             symptomsInput.focus();
@@ -147,6 +146,9 @@ async function findDoctors() {
                     resultDiv.innerHTML += `
                         <div class="card" style="animation-delay:${i * 0.12}s">
                             <strong>${d.name}</strong><br>
+                            <div class="specialization-badge">
+                            🩺 ${d.specialization}
+                            </div><br>
                             ${d.hospital}<br>
                             📍 ${d.distance_km} km away<br>
                             📞 ${d.phone}

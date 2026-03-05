@@ -141,7 +141,6 @@ button:disabled {
 }
 
 /* ===== CARD ===== */
-/* ===== CARD ===== */
 .card {
   background: var(--card-soft);
   padding: 16px;
@@ -320,4 +319,23 @@ body.dark .suggestion-item {
 }
 html, body {
   overflow-y: auto;
+}
+
+.specialization-badge {
+  display: inline-block;
+  margin-top: 6px;
+  margin-bottom: 8px;
+
+  background: rgba(45,100,235,0.15);
+  color: #2d64eb;
+
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+body.dark .specialization-badge {
+  background: rgba(45,100,235,0.25);
+  color: #9ec5ff;
 }
