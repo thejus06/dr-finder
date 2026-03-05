@@ -34,6 +34,329 @@
   "phone": "9123456789",
   "lat": 11.8745,
   "lng": 75.3704
+  },
+  {
+  "name": "Dr. Arun Kumar",
+  "specialization": "General Physician",
+  "city": "Kannur",
+  "hospital": "Aster MIMS Kannur",
+  "phone": "9847012345",
+  "lat": 11.8745,
+  "lng": 75.3704
+  },
+  {
+  "name": "Dr. Nikhil Menon",
+  "specialization": "Cardiologist",
+  "city": "Kannur",
+  "hospital": "Baby Memorial Hospital Kannur",
+  "phone": "9847023456",
+  "lat": 11.8688,
+  "lng": 75.3556
+  },
+  {
+  "name": "Dr. Meera Nair",
+  "specialization": "Dermatologist",
+  "city": "Kannur",
+  "hospital": "AKG Memorial Hospital",
+  "phone": "9847034567",
+  "lat": 11.8801,
+  "lng": 75.3650
+  },
+  {
+  "name": "Dr. Rahul Varma",
+  "specialization": "Neurologist",
+  "city": "Kannur",
+  "hospital": "Indira Gandhi Co-operative Hospital",
+  "phone": "9847045678",
+  "lat": 11.8759,
+  "lng": 75.3723
+  },
+  {
+  "name": "Dr. Anjali Das",
+  "specialization": "ENT",
+  "city": "Kannur",
+  "hospital": "Aster MIMS Kannur",
+  "phone": "9847056789",
+  "lat": 11.8742,
+  "lng": 75.3710
+  },
+  {
+  "name": "Dr. Sandeep Nair",
+  "specialization": "Gastroenterologist",
+  "city": "Kannur",
+  "hospital": "AKG Memorial Hospital",
+  "phone": "9847067890",
+  "lat": 11.8780,
+  "lng": 75.3681
+  },
+  {
+  "name": "Dr. Deepa Krishnan",
+  "specialization": "Ophthalmologist",
+  "city": "Kannur",
+  "hospital": "Malabar Eye Hospital",
+  "phone": "9847078901",
+  "lat": 11.8723,
+  "lng": 75.3605
+  },
+  {
+  "name": "Dr. Vinod Kumar",
+  "specialization": "Dentist",
+  "city": "Kannur",
+  "hospital": "Kannur Dental Care",
+  "phone": "9847089012",
+  "lat": 11.8694,
+  "lng": 75.3660
+  },
+  {
+"name":"Dr. Priya Menon",
+"specialization":"General Physician",
+"city":"Kannur",
+"hospital":"Moulana Hospital",
+"phone":"9847100001",
+"lat":11.8751,
+"lng":75.3712
+},
+{
+"name":"Dr. Ajith Kumar",
+"specialization":"Cardiologist",
+"city":"Kannur",
+"hospital":"Aster MIMS Kannur",
+"phone":"9847100002",
+"lat":11.8765,
+"lng":75.3691
+},
+{
+"name":"Dr. Reshma Das",
+"specialization":"Dermatologist",
+"city":"Kannur",
+"hospital":"AKG Memorial Hospital",
+"phone":"9847100003",
+"lat":11.8792,
+"lng":75.3664
+},
+{
+"name":"Dr. Sanjay Pillai",
+"specialization":"Neurologist",
+"city":"Kannur",
+"hospital":"Indira Gandhi Hospital",
+"phone":"9847100004",
+"lat":11.8781,
+"lng":75.3725
+},
+{
+"name":"Dr. Anoop Mathew",
+"specialization":"ENT",
+"city":"Kannur",
+"hospital":"Koyili Hospital",
+"phone":"9847100005",
+"lat":11.8730,
+"lng":75.3678
+},
+{
+"name":"Dr. Lakshmi Nair",
+"specialization":"Ophthalmologist",
+"city":"Kannur",
+"hospital":"Malabar Eye Hospital",
+"phone":"9847100006",
+"lat":11.8710,
+"lng":75.3609
+},
+{
+"name":"Dr. Rahul Das",
+"specialization":"Dentist",
+"city":"Kannur",
+"hospital":"Smile Dental Clinic",
+"phone":"9847100007",
+"lat":11.8702,
+"lng":75.3651
+},
+{
+"name":"Dr. Vivek Raj",
+"specialization":"Gastroenterologist",
+"city":"Kannur",
+"hospital":"AKG Memorial Hospital",
+"phone":"9847100008",
+"lat":11.8804,
+"lng":75.3689
+},
+{
+"name":"Dr. Sneha Menon",
+"specialization":"Dermatologist",
+"city":"Kochi",
+"hospital":"Aster Medcity",
+"phone":"9847100009",
+"lat":9.9891,
+"lng":76.2850
+},
+{
+"name":"Dr. Abhishek Nair",
+"specialization":"Cardiologist",
+"city":"Kochi",
+"hospital":"Lakeshore Hospital",
+"phone":"9847100010",
+"lat":9.9315,
+"lng":76.2676
+},
+{
+"name":"Dr. Neethu Thomas",
+"specialization":"General Physician",
+"city":"Kochi",
+"hospital":"Amrita Hospital",
+"phone":"9847100011",
+"lat":10.0321,
+"lng":76.2962
+},
+{
+"name":"Dr. Joseph Mathew",
+"specialization":"Neurologist",
+"city":"Kochi",
+"hospital":"Rajagiri Hospital",
+"phone":"9847100012",
+"lat":10.0450,
+"lng":76.3470
+},
+{
+"name":"Dr. Akhil Varghese",
+"specialization":"Dentist",
+"city":"Kochi",
+"hospital":"Metro Dental Clinic",
+"phone":"9847100013",
+"lat":9.9811,
+"lng":76.2789
+},
+{
+"name":"Dr. Sreedevi Pillai",
+"specialization":"Dermatologist",
+"city":"Kozhikode",
+"hospital":"Baby Memorial Hospital",
+"phone":"9847100014",
+"lat":11.2588,
+"lng":75.7804
+},
+{
+"name":"Dr. Arun Raj",
+"specialization":"Cardiologist",
+"city":"Kozhikode",
+"hospital":"IQRAA Hospital",
+"phone":"9847100015",
+"lat":11.2655,
+"lng":75.7767
+},
+{
+"name":"Dr. Nisha George",
+"specialization":"ENT",
+"city":"Kozhikode",
+"hospital":"Aster MIMS Kozhikode",
+"phone":"9847100016",
+"lat":11.2730,
+"lng":75.7902
+},
+{
+"name":"Dr. Praveen Kumar",
+"specialization":"Neurologist",
+"city":"Kozhikode",
+"hospital":"Government Medical College",
+"phone":"9847100017",
+"lat":11.2725,
+"lng":75.8365
+},
+{
+"name":"Dr. Aswin Nair",
+"specialization":"Ophthalmologist",
+"city":"Kozhikode",
+"hospital":"Comtrust Eye Hospital",
+"phone":"9847100018",
+"lat":11.2500,
+"lng":75.7830
+},
+{
+"name":"Dr. Anitha Nair",
+"specialization":"General Physician",
+"city":"Kozhikode",
+"hospital":"IQRAA Hospital",
+"phone":"9847100019",
+"lat":11.2680,
+"lng":75.7795
+},
+{
+"name":"Dr. Vivek Menon",
+"specialization":"Dentist",
+"city":"Kozhikode",
+"hospital":"Smile Dental Care",
+"phone":"9847100020",
+"lat":11.2595,
+"lng":75.7821
+},
+{
+"name":"Dr. Ajay Kumar",
+"specialization":"General Physician",
+"city":"Kasaragod",
+"hospital":"Kasaragod Medical Centre",
+"phone":"9847100021",
+"lat":12.4996,
+"lng":74.9869
+},
+{
+"name":"Dr. Sunil Bhat",
+"specialization":"Cardiologist",
+"city":"Kasaragod",
+"hospital":"City Hospital Kasaragod",
+"phone":"9847100022",
+"lat":12.5031,
+"lng":74.9902
+},
+{
+"name":"Dr. Radhika Pai",
+"specialization":"Dermatologist",
+"city":"Kasaragod",
+"hospital":"Malabar Hospital",
+"phone":"9847100023",
+"lat":12.4978,
+"lng":74.9890
+},
+{
+"name":"Dr. Manju Nair",
+"specialization":"ENT",
+"city":"Kasaragod",
+"hospital":"Kasaragod Medical Centre",
+"phone":"9847100024",
+"lat":12.5010,
+"lng":74.9877
+},
+{
+"name":"Dr. Rajesh Shetty",
+"specialization":"Dentist",
+"city":"Kasaragod",
+"hospital":"Smile Dental Clinic",
+"phone":"9847100025",
+"lat":12.5004,
+"lng":74.9888
+},
+{
+"name":"Dr. Kiran Varma",
+"specialization":"Neurologist",
+"city":"Kasaragod",
+"hospital":"Malabar Hospital",
+"phone":"9847100026",
+"lat":12.5020,
+"lng":74.9895
+},
+{
+"name":"Dr. Nithya Nair",
+"specialization":"Ophthalmologist",
+"city":"Kasaragod",
+"hospital":"Eye Care Hospital",
+"phone":"9847100027",
+"lat":12.4988,
+"lng":74.9880
+},
+{
+"name":"Dr. Arjun Pillai",
+"specialization":"Gastroenterologist",
+"city":"Kasaragod",
+"hospital":"City Hospital",
+"phone":"9847100028",
+"lat":12.5015,
+"lng":74.9899
 }
-
 ]

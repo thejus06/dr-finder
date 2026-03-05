@@ -5,7 +5,7 @@ import math
 
 # -------------------- Utility: Haversine Formula --------------------
 def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # Earth radius in KM
+    R = 6371
     dlat = math.radians(lat2 - lat1)
     dlon = math.radians(lon2 - lon1)
 
@@ -47,45 +47,45 @@ def find_doctors():
     user_lat = data.get("lat")
     user_lng = data.get("lng")
 
-    # 1️⃣ Normalize symptoms (comma / and)
+    #  Normalize symptoms (comma / and)
     cleaned = raw_symptoms.replace(" and ", ",")
     tokens = [s.strip() for s in cleaned.split(",") if s.strip()]
 
     matched_specializations = set()
 
-    # 2️⃣ Detect specializations (supports multiple per symptom)
+    #  Detect specializations (supports multiple per symptom)
     for token in tokens:
         for symptom, specs in symptom_map.items():
             if symptom in token:
                 for spec in specs:
                     matched_specializations.add(spec)
 
-    # ❌ No valid symptoms found
+    #  No valid symptoms found
     if not matched_specializations:
         return jsonify({
             "error": "Symptoms not recognized. Please enter valid medical symptoms."
         }), 400
 
-    # 3️⃣ Match doctors by specialization
+    #  Match doctors by specialization
     matched_doctors = [
         d for d in doctors
         if d["specialization"] in matched_specializations
     ]
 
-    # 4️⃣ Filter by city
+    #  Filter by city
     if city:
         matched_doctors = [
             d for d in matched_doctors
             if d.get("city", "").lower() == city
         ]
 
-    # 5️⃣ Calculate distance
+    #  Calculate distance
     for d in matched_doctors:
         d["distance_km"] = haversine(
             user_lat, user_lng, d["lat"], d["lng"]
         )
 
-    # 6️⃣ Sort nearest first
+    #  Sort nearest first
     matched_doctors.sort(key=lambda x: x["distance_km"])
 
     return jsonify({

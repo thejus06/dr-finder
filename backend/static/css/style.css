@@ -26,17 +26,18 @@ body.dark {
 body {
   background: var(--bg);
   color: var(--text-primary);
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding-top: 40px;  
   transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* ===== CONTAINER ===== */
 .container {
-  position: relative; /* ✅ ADD THIS */
-  width: 440px;
+  position: relative;
+  width: 520px;
   padding: 36px;
   background: var(--card-bg);
   border-radius: 16px;
@@ -302,4 +303,21 @@ body.dark .suggestions {
 
 body.dark .suggestion-item {
   color: #eaf0ff;
+}
+
+.search-section {
+  position: sticky;
+  top: 0;
+  background: var(--card-bg);
+  padding-bottom: 10px;
+  z-index: 10;
+}
+
+.results-section {
+  max-height: 420px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+html, body {
+  overflow-y: auto;
 }
