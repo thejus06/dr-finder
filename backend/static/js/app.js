@@ -88,18 +88,20 @@ document.addEventListener("click", (e) => {
    DOCTOR SEARCH LOGIC
 ========================= */
 async function findDoctors() {
-    const cityInput = document.getElementById("city");
+    const districtInput = document.getElementById("district");
+    const townInput = document.getElementById("town");
     const resultDiv = document.getElementById("result");
     const loading = document.getElementById("loading");
     const btn = document.getElementById("findBtn");
 
     const symptoms = symptomsInput.value.trim();
-    const city = cityInput.value.trim().toLowerCase();
+    const district = districtInput.value.trim().toLowerCase();
+    const town = townInput.value.trim().toLowerCase();
 
     resultDiv.innerHTML = "";
 
-    if (!symptoms || !city) {
-        resultDiv.innerHTML = `<div class="error">Please enter both symptoms and city.</div>`;
+    if (!symptoms) {
+        resultDiv.innerHTML = `<div class="error">Please enter symptoms.</div>`;
         return;
     }
 
@@ -121,7 +123,8 @@ async function findDoctors() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                         symptoms,
-                        city,
+                        district,
+                        town,
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
                     })
@@ -150,6 +153,7 @@ async function findDoctors() {
                             🩺 ${d.specialization}
                             </div><br>
                             ${d.hospital}<br>
+                            📍 ${d.town}, ${d.city}<br>
                             📍 ${d.distance_km} km away<br>
                             📞 ${d.phone}
 

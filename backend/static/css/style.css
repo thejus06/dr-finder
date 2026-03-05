@@ -339,3 +339,9 @@ body.dark .specialization-badge {
   background: rgba(45,100,235,0.25);
   color: #9ec5ff;
 }
+.search-section label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}

@@ -43,7 +43,8 @@ def find_doctors():
     data = request.json
 
     raw_symptoms = data.get("symptoms", "").lower()
-    city = data.get("city", "").lower()
+    district = data.get("district", "").lower()
+    town = data.get("town", "").lower()
     user_lat = data.get("lat")
     user_lng = data.get("lng")
 
@@ -56,7 +57,7 @@ def find_doctors():
     #  Detect specializations (supports multiple per symptom)
     for token in tokens:
         for symptom, specs in symptom_map.items():
-            if symptom in token:
+            if symptom in token or token in symptom:
                 for spec in specs:
                     matched_specializations.add(spec)
 
@@ -73,10 +74,17 @@ def find_doctors():
     ]
 
     #  Filter by city
-    if city:
+    if district:
         matched_doctors = [
             d for d in matched_doctors
-            if d.get("city", "").lower() == city
+            if district in d.get("city", "").lower()
+        ]
+
+    # Filter by town
+    if town:
+        matched_doctors = [
+            d for d in matched_doctors
+            if town in d.get("town", "").lower()
         ]
 
     #  Calculate distance

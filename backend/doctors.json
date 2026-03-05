@@ -358,5 +358,25 @@
 "phone":"9847100028",
 "lat":12.5015,
 "lng":74.9899
+},
+{
+"name": "Dr. Joseph Mathew",
+"specialization": "General Physician",
+"city": "Kannur",
+"town": "Chemperi",
+"hospital": "Chemperi Cooperative Hospital",
+"phone": "9847123456",
+"lat": 12.0535,
+"lng": 75.5351
+},
+{
+"name": "Dr. Sajin Thomas",
+"specialization": "Dentist",
+"city": "Kannur",
+"town": "Chemperi",
+"hospital": "St. Joseph Dental Clinic",
+"phone": "9847134567",
+"lat": 12.0520,
+"lng": 75.5330
 }
 ]
