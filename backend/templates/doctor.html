@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{{ doctor.name }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>{{ doctor.name }}</h2>
+
+<p><strong>Specialization:</strong> {{ doctor.specialization }}</p>
+
+<p><strong>Hospital:</strong> {{ doctor.hospital }}</p>
+
+<p><strong>Location:</strong> {{ doctor.city }}</p>
+
+<p><strong>Phone:</strong> {{ doctor.phone }}</p>
+
+<h3>Book Appointment</h3>
+
+<form>
+
+<label>Date</label>
+<input type="date" required>
+
+<label>Time</label>
+<input type="time" required>
+
+<button type="submit">Confirm Appointment</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

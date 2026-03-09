@@ -157,6 +157,10 @@ async function findDoctors() {
                             📍 ${d.distance_km} km away<br>
                             📞 ${d.phone}
 
+                            <button class="book-btn" onclick="viewDoctor('${d.name}')">
+                            Book Appointment
+                            </button>
+
                             <iframe
                                 width="100%"
                                 height="160"
@@ -184,4 +188,7 @@ async function findDoctors() {
             resultDiv.innerHTML = `<div class="error">Location access is required.</div>`;
         }
     );
+}
+function viewDoctor(name) {
+    window.location.href = `/doctor/${encodeURIComponent(name)}`;
 }

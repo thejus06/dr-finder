@@ -101,7 +101,20 @@ def find_doctors():
         "doctors": matched_doctors
     })
 
+@app.route("/doctor/<name>")
+def doctor_profile(name):
 
+    doctor = None
+
+    for d in doctors:
+        if d["name"] == name:
+            doctor = d
+            break
+
+    if not doctor:
+        return "Doctor not found", 404
+
+    return render_template("doctor.html", doctor=doctor)
 # -------------------- Run Server --------------------
 if __name__ == "__main__":
     app.run(debug=True)
