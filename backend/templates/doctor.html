@@ -21,18 +21,22 @@
 
 <h3>Book Appointment</h3>
 
-<form>
+<form method="POST" action="/book-appointment">
+
+<label>Your Name</label>
+<input type="text" name="patient_name" required>
+
+<input type="hidden" name="doctor_name" value="{{ doctor.name }}">
 
 <label>Date</label>
-<input type="date" required>
+<input type="date" name="date" required>
 
 <label>Time</label>
-<input type="time" required>
+<input type="time" name="time" required>
 
 <button type="submit">Confirm Appointment</button>
 
 </form>
-
 </div>
 
 </body>

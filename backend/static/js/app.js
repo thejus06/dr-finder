@@ -28,14 +28,19 @@ const symptomsInput = document.getElementById("symptoms");
 const suggestionsBox = document.getElementById("suggestions");
 
 const ALL_SYMPTOMS = [
-    "fever",
-    "cold",
-    "cough",
-    "headache",
-    "chest pain",
-    "skin",
-    "eye",
-    "tooth"
+"fever",
+"cold",
+"cough",
+"headache",
+"chest pain",
+"skin",
+"rash",
+"itching",
+"eye",
+"tooth pain",
+"stomach pain",
+"vomiting",
+"diarrhea"
 ];
 
 symptomsInput.addEventListener("input", () => {
@@ -75,6 +80,13 @@ symptomsInput.addEventListener("input", () => {
     });
 
     suggestionsBox.classList.remove("hidden");
+});
+
+symptomsInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        findDoctors();
+    }
 });
 
 document.addEventListener("click", (e) => {
@@ -157,7 +169,7 @@ async function findDoctors() {
                             📍 ${d.distance_km} km away<br>
                             📞 ${d.phone}
 
-                            <button class="book-btn" onclick="viewDoctor('${d.name}')">
+                            <button class="book-btn" onclick="viewDoctor(${d.id})">
                             Book Appointment
                             </button>
 
@@ -189,6 +201,6 @@ async function findDoctors() {
         }
     );
 }
-function viewDoctor(name) {
-    window.location.href = `/doctor/${encodeURIComponent(name)}`;
+function viewDoctor(id) {
+    window.location.href = "/doctor/" + id;
 }

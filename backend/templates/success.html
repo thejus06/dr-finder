@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Appointment Booked</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>✅ Appointment Confirmed</h2>
+
+<p>Your appointment with <strong>{{ doctor }}</strong> is booked.</p>
+
+<p>Date: {{ date }}</p>
+<p>Time: {{ time }}</p>
+
+<a href="/">Back to Home</a>
+
+</div>
+
+</body>
+</html>

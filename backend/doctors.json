@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Dr. Anil Kumar",
     "specialization": "General Physician",
     "city": "Bangalore",
@@ -9,6 +10,7 @@
     "lng": 77.5946
   },
   {
+    "id": 2,
     "name": "Dr. Ramesh Rao",
     "specialization": "Cardiologist",
     "city": "Bangalore",
@@ -18,6 +20,7 @@
     "lng": 77.5920
   },
   {
+    "id": 3,
     "name": "Dr. Neha Sharma",
     "specialization": "Dermatologist",
     "city": "Delhi",
@@ -27,15 +30,17 @@
     "lng": 77.2090
   },
   {
-  "name": "Dr. Suresh Nair",
-  "specialization": "General Physician",
-  "city": "kannur",
-  "hospital": "Kannur Medical Centre",
-  "phone": "9123456789",
-  "lat": 11.8745,
-  "lng": 75.3704
+    "id": 4,
+    "name": "Dr. Suresh Nair",
+    "specialization": "General Physician",
+    "city": "kannur",
+    "hospital": "Kannur Medical Centre",
+    "phone": "9123456789",
+    "lat": 11.8745,
+    "lng": 75.3704
   },
   {
+  "id": 5,
   "name": "Dr. Arun Kumar",
   "specialization": "General Physician",
   "city": "Kannur",
@@ -45,6 +50,7 @@
   "lng": 75.3704
   },
   {
+  "id": 6,
   "name": "Dr. Nikhil Menon",
   "specialization": "Cardiologist",
   "city": "Kannur",
@@ -54,6 +60,7 @@
   "lng": 75.3556
   },
   {
+  "id": 7,
   "name": "Dr. Meera Nair",
   "specialization": "Dermatologist",
   "city": "Kannur",
@@ -63,6 +70,7 @@
   "lng": 75.3650
   },
   {
+  "id": 8,
   "name": "Dr. Rahul Varma",
   "specialization": "Neurologist",
   "city": "Kannur",
@@ -72,6 +80,7 @@
   "lng": 75.3723
   },
   {
+  "id": 9,
   "name": "Dr. Anjali Das",
   "specialization": "ENT",
   "city": "Kannur",
@@ -81,6 +90,7 @@
   "lng": 75.3710
   },
   {
+  "id": 10,
   "name": "Dr. Sandeep Nair",
   "specialization": "Gastroenterologist",
   "city": "Kannur",
@@ -90,6 +100,7 @@
   "lng": 75.3681
   },
   {
+  "id": 11,
   "name": "Dr. Deepa Krishnan",
   "specialization": "Ophthalmologist",
   "city": "Kannur",
@@ -99,6 +110,7 @@
   "lng": 75.3605
   },
   {
+  "id": 12,
   "name": "Dr. Vinod Kumar",
   "specialization": "Dentist",
   "city": "Kannur",
@@ -108,15 +120,18 @@
   "lng": 75.3660
   },
   {
-"name":"Dr. Priya Menon",
-"specialization":"General Physician",
-"city":"Kannur",
-"hospital":"Moulana Hospital",
-"phone":"9847100001",
-"lat":11.8751,
-"lng":75.3712
+  "id": 13,
+  "name":"Dr. Priya Menon",
+  "specialization":"General Physician",
+  "town": "Talap",
+  "city":"Kannur",
+  "hospital":"Moulana Hospital",
+  "phone":"9847100001",
+  "lat":11.8751,
+  "lng":75.3712
 },
 {
+"id": 14,
 "name":"Dr. Ajith Kumar",
 "specialization":"Cardiologist",
 "city":"Kannur",
@@ -126,6 +141,7 @@
 "lng":75.3691
 },
 {
+"id": 15,
 "name":"Dr. Reshma Das",
 "specialization":"Dermatologist",
 "city":"Kannur",
@@ -135,6 +151,7 @@
 "lng":75.3664
 },
 {
+"id": 16,
 "name":"Dr. Sanjay Pillai",
 "specialization":"Neurologist",
 "city":"Kannur",
@@ -144,6 +161,7 @@
 "lng":75.3725
 },
 {
+"id": 17,
 "name":"Dr. Anoop Mathew",
 "specialization":"ENT",
 "city":"Kannur",
@@ -153,6 +171,7 @@
 "lng":75.3678
 },
 {
+"id": 42,
 "name":"Dr. Lakshmi Nair",
 "specialization":"Ophthalmologist",
 "city":"Kannur",
@@ -162,6 +181,7 @@
 "lng":75.3609
 },
 {
+"id": 18,
 "name":"Dr. Rahul Das",
 "specialization":"Dentist",
 "city":"Kannur",
@@ -171,6 +191,7 @@
 "lng":75.3651
 },
 {
+"id": 19,
 "name":"Dr. Vivek Raj",
 "specialization":"Gastroenterologist",
 "city":"Kannur",
@@ -180,6 +201,7 @@
 "lng":75.3689
 },
 {
+"id": 20,
 "name":"Dr. Sneha Menon",
 "specialization":"Dermatologist",
 "city":"Kochi",
@@ -189,6 +211,7 @@
 "lng":76.2850
 },
 {
+"id"  : 21,  
 "name":"Dr. Abhishek Nair",
 "specialization":"Cardiologist",
 "city":"Kochi",
@@ -198,6 +221,7 @@
 "lng":76.2676
 },
 {
+"id": 22,
 "name":"Dr. Neethu Thomas",
 "specialization":"General Physician",
 "city":"Kochi",
@@ -207,6 +231,7 @@
 "lng":76.2962
 },
 {
+"id": 23,
 "name":"Dr. Joseph Mathew",
 "specialization":"Neurologist",
 "city":"Kochi",
@@ -216,6 +241,7 @@
 "lng":76.3470
 },
 {
+"id": 24,
 "name":"Dr. Akhil Varghese",
 "specialization":"Dentist",
 "city":"Kochi",
@@ -225,6 +251,7 @@
 "lng":76.2789
 },
 {
+"id": 25,
 "name":"Dr. Sreedevi Pillai",
 "specialization":"Dermatologist",
 "city":"Kozhikode",
@@ -234,6 +261,7 @@
 "lng":75.7804
 },
 {
+"id": 41,
 "name":"Dr. Arun Raj",
 "specialization":"Cardiologist",
 "city":"Kozhikode",
@@ -243,6 +271,7 @@
 "lng":75.7767
 },
 {
+"id": 26,
 "name":"Dr. Nisha George",
 "specialization":"ENT",
 "city":"Kozhikode",
@@ -252,6 +281,7 @@
 "lng":75.7902
 },
 {
+"id": 27,
 "name":"Dr. Praveen Kumar",
 "specialization":"Neurologist",
 "city":"Kozhikode",
@@ -261,6 +291,7 @@
 "lng":75.8365
 },
 {
+"id": 28,
 "name":"Dr. Aswin Nair",
 "specialization":"Ophthalmologist",
 "city":"Kozhikode",
@@ -270,6 +301,7 @@
 "lng":75.7830
 },
 {
+"id": 29,
 "name":"Dr. Anitha Nair",
 "specialization":"General Physician",
 "city":"Kozhikode",
@@ -279,6 +311,7 @@
 "lng":75.7795
 },
 {
+"id": 30,
 "name":"Dr. Vivek Menon",
 "specialization":"Dentist",
 "city":"Kozhikode",
@@ -288,6 +321,7 @@
 "lng":75.7821
 },
 {
+"id": 31,
 "name":"Dr. Ajay Kumar",
 "specialization":"General Physician",
 "city":"Kasaragod",
@@ -297,6 +331,7 @@
 "lng":74.9869
 },
 {
+"id": 32,
 "name":"Dr. Sunil Bhat",
 "specialization":"Cardiologist",
 "city":"Kasaragod",
@@ -306,6 +341,7 @@
 "lng":74.9902
 },
 {
+"id": 33,
 "name":"Dr. Radhika Pai",
 "specialization":"Dermatologist",
 "city":"Kasaragod",
@@ -315,6 +351,7 @@
 "lng":74.9890
 },
 {
+"id": 34,
 "name":"Dr. Manju Nair",
 "specialization":"ENT",
 "city":"Kasaragod",
@@ -324,6 +361,7 @@
 "lng":74.9877
 },
 {
+"id": 35,
 "name":"Dr. Rajesh Shetty",
 "specialization":"Dentist",
 "city":"Kasaragod",
@@ -333,6 +371,7 @@
 "lng":74.9888
 },
 {
+"id": 36,
 "name":"Dr. Kiran Varma",
 "specialization":"Neurologist",
 "city":"Kasaragod",
@@ -342,6 +381,7 @@
 "lng":74.9895
 },
 {
+"id": 37,
 "name":"Dr. Nithya Nair",
 "specialization":"Ophthalmologist",
 "city":"Kasaragod",
@@ -351,6 +391,7 @@
 "lng":74.9880
 },
 {
+"id": 38,
 "name":"Dr. Arjun Pillai",
 "specialization":"Gastroenterologist",
 "city":"Kasaragod",
@@ -360,6 +401,7 @@
 "lng":74.9899
 },
 {
+"id": 39,
 "name": "Dr. Joseph Mathew",
 "specialization": "General Physician",
 "city": "Kannur",
@@ -370,6 +412,7 @@
 "lng": 75.5351
 },
 {
+"id": 40,
 "name": "Dr. Sajin Thomas",
 "specialization": "Dentist",
 "city": "Kannur",

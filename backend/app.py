@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import json
 import math
+import sqlite3
+from rapidfuzz import fuzz
 
 # -------------------- Utility: Haversine Formula --------------------
 def haversine(lat1, lon1, lat2, lon2):
@@ -30,7 +32,22 @@ with open("symptoms.json", "r") as f:
 with open("doctors.json", "r") as f:
     doctors = json.load(f)
 
+def init_db():
+    conn = sqlite3.connect("appointments.db")
+    cursor = conn.cursor()
 
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS appointments (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        patient_name TEXT,
+        doctor_name TEXT,
+        date TEXT,
+        time TEXT
+    )
+    """)
+
+    conn.commit()
+    conn.close()
 # -------------------- Home Route --------------------
 @app.route("/")
 def home():
@@ -49,15 +66,21 @@ def find_doctors():
     user_lng = data.get("lng")
 
     #  Normalize symptoms (comma / and)
-    cleaned = raw_symptoms.replace(" and ", ",")
-    tokens = [s.strip() for s in cleaned.split(",") if s.strip()]
-
     matched_specializations = set()
 
-    #  Detect specializations (supports multiple per symptom)
-    for token in tokens:
-        for symptom, specs in symptom_map.items():
-            if symptom in token or token in symptom:
+    for symptom, specs in symptom_map.items():
+
+        # direct phrase match
+        if symptom in raw_symptoms:
+
+            for spec in specs:
+                matched_specializations.add(spec)
+
+        # fallback fuzzy match
+        else:
+            similarity = fuzz.partial_ratio(raw_symptoms, symptom)
+
+            if similarity > 80:
                 for spec in specs:
                     matched_specializations.add(spec)
 
@@ -101,20 +124,46 @@ def find_doctors():
         "doctors": matched_doctors
     })
 
-@app.route("/doctor/<name>")
-def doctor_profile(name):
 
-    doctor = None
+@app.route("/doctor/<int:id>")
+def doctor_profile(id):
 
-    for d in doctors:
-        if d["name"] == name:
-            doctor = d
-            break
+        doctor = None
 
-    if not doctor:
-        return "Doctor not found", 404
+        for d in doctors:
+            if d["id"] == id:
+                doctor = d
+                break
 
-    return render_template("doctor.html", doctor=doctor)
+        if not doctor:
+            return "Doctor not found", 404
+
+        return render_template("doctor.html", doctor=doctor)
+
+@app.route("/book-appointment", methods=["POST"])
+def book_appointment():
+
+    data = request.form
+
+    patient = data.get("patient_name")
+    doctor = data.get("doctor_name")
+    date = data.get("date")
+    time = data.get("time")
+
+    conn = sqlite3.connect("appointments.db")
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        INSERT INTO appointments (patient_name, doctor_name, date, time)
+        VALUES (?, ?, ?, ?)
+    """, (patient, doctor, date, time))
+
+    conn.commit()
+    conn.close()
+
+    return render_template("success.html", doctor=doctor, date=date, time=time)
+
 # -------------------- Run Server --------------------
 if __name__ == "__main__":
+    init_db()
     app.run(debug=True)
